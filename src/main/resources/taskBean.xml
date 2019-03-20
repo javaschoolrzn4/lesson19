@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util.xsd">
+
+        <!-- Чтение файла пропертей в контейнере спринг -->
+        <util:properties id="appConfig" location="classpath:scan.properties" />
+
+        <bean id="scanWorker" class="com.javarzn.core.spring.workers.ScanWorker" scope="prototype">
+              <constructor-arg ref="appConfig"/>
+              <constructor-arg value="${scan.directory}"/>
+              <constructor-arg value="#{${scan.interval.sec} * 1000}"/>
+              <constructor-arg value="${copy.enabled}"/>
+              <constructor-arg value="${copy.thread.count}"/>
+              <constructor-arg value="${copy.directory}"/>
+              <constructor-arg value="${copy.directory.create}"/>
+              <constructor-arg value="${report.enabled}"/>
+              <constructor-arg value="${report.name.prefix}"/>
+              <constructor-arg value="${report.name.postfix}"/>
+              <constructor-arg value="${report.directory}"/>
+              <constructor-arg value="${report.directory.create}"/>
+        </bean>
+
+        <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+              <property name="corePoolSize" value="5" />
+              <property name="maxPoolSize" value="10" />
+              <property name="WaitForTasksToCompleteOnShutdown" value="true" />
+        </bean>
+
+        <bean id="taskManager" class="com.javarzn.core.spring.processing.TaskManager">
+              <constructor-arg ref="taskExecutor"/>
+              <constructor-arg ref="scanWorker"/>
+        </bean>
+
+        <!--Работа с ${} -->
+        <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" p:location="scan.properties"/>
+</beans>
