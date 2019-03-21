@@ -35,18 +35,22 @@
     <util:properties id="appConfig" location="classpath:scan.properties" />
 
     <!-- Внедрение через проперти класса -->
-    <bean id="appConfigExample" class="com.javarzn.training.AppConfig" p:properties-ref="appConfig" p:myStringProperty="appConfigExample">
-        <property name="myPropertyList">
-            <list>
-                <value>First</value>
-                <value>Second</value>
-            </list>
-        </property>
-    </bean>
+    <!--<bean id="appConfigExample" class="com.javarzn.training.AppConfig" p:properties-ref="appConfig" p:myStringProperty="qeq">-->
+        <!--<property name="myPropertyList">-->
+            <!--<list>-->
+                <!--<value>First</value>-->
+                <!--<value>Second</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
 
     <!--SPEL примеры -->
-    <bean id="spelExample" class="com.javarzn.training.AppConfig" init-method="spelExample">
-        <property name="myStringProperty" value="#{appConfigExample.myStringProperty}"/>
+    <!--<bean id="spelExample" class="com.javarzn.training.AppConfig" init-method="spelExample">-->
+        <!--<property name="myStringProperty" value="#{appConfigExample.myStringProperty}"/>-->
+    <!--</bean>-->
+
+    <bean id="myTestProp" class="com.javarzn.training.spel.MyTestClass" init-method="init">
+        <property name="myStringProperty" value="#{appConfig.getProperty('scan.directory')?.toUpperCase()}"/>
     </bean>
 
     <!--<bean id="spelExampleMethod" class="com.javarzn.training.AppConfig" init-method="spelExample">-->

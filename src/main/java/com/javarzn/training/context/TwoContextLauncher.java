@@ -7,7 +7,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class TwoContextLauncher {
     private static String classPathBeansPath = "classPathBeans.xml";
-    private static String fileSystemBeansPath = "C:\\Users\\sbt-keglev-kn\\Desktop\\Лекция по Spring\\Core\\Исходный код\\SpringCore\\src\\main\\resources\\fileSystemBeans.xml";
+    private static String fileSystemBeansPath = "C:\\javaschool\\kaptsov-sa\\lesson19\\src\\main\\resources\\fileSystemBeans.xml";
 
     public static void main(String[] args) {
         ApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext(classPathBeansPath);
