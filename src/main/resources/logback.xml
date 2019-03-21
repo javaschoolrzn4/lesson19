@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Файл настроек логирования -->
+<configuration scan="true" scanPeriod="30 seconds">
+    <!-- Логирование в консоль (например вкладка Server в IDEA) -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %C:%L - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="WARN">
+        <!-- Включение аппендеров, описанных выше -->
+        <appender-ref ref="stdout"/>
+    </root>
+</configuration>

@@ -1,13 +1,10 @@
 package com.javarzn.training.context;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class BeanAsParameter {
     private String helloParameter = "User";
-
-    public String getHelloParameter() {
-        return helloParameter;
-    }
-
-    public void setHelloParameter(String helloParameter) {
-        this.helloParameter = helloParameter;
-    }
 }

@@ -1,0 +1,7 @@
+
+S
+squid:S106"9Replace this use of System.out or System.err by a logger.(™ώχ8σ εά™-
+Qsquid:S2209"5Change this instance-reference to a static reference.(Ό’ ®8σ εά™-
+bsquid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(δ Ή€8σ εά™-
+_squid:S00107"BConstructor has 12 parameters, which is greater than 7 authorized.(Ώ«‘»8σ εά™-
+Dsquid:S1148"#Use a logger to log this exception.(€ΙΤ…ύÿÿÿÿ8σ εά™-

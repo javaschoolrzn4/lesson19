@@ -20,13 +20,13 @@ public final class ScanUtils {
         String mbSize = properties.getProperty("scan.file.size.mb");
         String gbSize = properties.getProperty("scan.file.size.gb");
         if (Objects.nonNull(kbSize)) {
-            return new ScanParameters(kbSize, 1024, "КБ");
+            return new ScanParameters(Long.valueOf(kbSize), 1024, "КБ");
         } else if (Objects.nonNull(mbSize)) {
-            return new ScanParameters(mbSize, 1024 * 1024, "МБ");
+            return new ScanParameters(Long.valueOf(mbSize), 1024 * 1024, "МБ");
         } else if (Objects.nonNull(gbSize)) {
-            return new ScanParameters(gbSize, 1024 * 1024 * 1024, "ГБ");
+            return new ScanParameters(Long.valueOf(gbSize), 1024 * 1024 * 1024, "ГБ");
         } else {
-            return new ScanParameters(String.valueOf(0), 1, "байт");
+            return new ScanParameters(Long.valueOf(0), 1, "байт");
         }
     }
 

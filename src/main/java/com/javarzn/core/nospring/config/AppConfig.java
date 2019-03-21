@@ -1,5 +1,7 @@
 package com.javarzn.core.nospring.config;
 
+import lombok.Getter;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -7,15 +9,12 @@ import java.util.Properties;
 public class AppConfig {
     public static final String FILE_NAME = "scan.properties";
 
+    @Getter
     private Properties resource = new Properties();
     private InputStream inputStream = null;
 
     public AppConfig() {
         initResource();
-    }
-
-    public Properties getResource() {
-        return resource;
     }
 
     private void initResource() {
